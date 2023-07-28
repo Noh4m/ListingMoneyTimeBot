@@ -1,6 +1,11 @@
 const puppeteer = require('puppeteer');
 const { WebhookClient, EmbedBuilder } = require('discord.js');
 
+process.on('uncaughtException', (err) => {
+  console.error('Erreur non capturée :', err);
+  // Vous pouvez afficher un message ou un journal des erreurs ici
+});
+
 // Remplacez "WEBHOOK_URL" par l'URL de votre Webhook Discord
 const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/1134476448506335272/YGYQwha20PHVZMo1kE6lKfPdnG7KNi2SA3Hl5MABQz0qsbF7D1g3Sud7QVfSZRiJWxKp' });
 
