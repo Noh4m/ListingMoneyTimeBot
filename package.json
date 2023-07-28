@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
+    "heroku-prebuild": "npm install",
     "start": "node index.js" 
   },
   "keywords": [],
