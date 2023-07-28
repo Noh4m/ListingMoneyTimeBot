@@ -7,8 +7,7 @@ const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/11344
 (async () => {
   try {
     async function getDataAndRefresh() {
-      const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome'; 
-      const browser = await puppeteer.launch({ executablePath, headless: true });
+      const browser = await puppeteer.launch({ headless: true });
       const page = await browser.newPage();
       await page.goto('https://www.coteur.com/comparateur-de-cotes');
 
