@@ -7,7 +7,14 @@ const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/11344
 (async () => {
   try {
     async function getDataAndRefresh() {
-      const browser = await puppeteer.launch({ headless: "new" });
+      // Définir le chemin vers Chrome sur Heroku
+    const chromePath = '/app/.apt/usr/bin/google-chrome'; // Chemin vers Chrome sur Heroku
+
+    const browser = await puppeteer.launch({
+      executablePath: chromePath,
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: "new",
+    });
       const page = await browser.newPage();
       await page.goto('https://www.coteur.com/comparateur-de-cotes');
 
