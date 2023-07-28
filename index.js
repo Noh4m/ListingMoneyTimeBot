@@ -13,10 +13,10 @@ const webhook = new WebhookClient({ url: 'https://discord.com/api/webhooks/11344
   try {
     async function getDataAndRefresh() {
       // Définir le chemin vers Chrome sur Heroku
-    // const chromePath = '/app/.apt/usr/bin/google-chrome'; // Chemin vers Chrome sur Heroku
+    const chromePath = '/app/.apt/usr/bin/google-chrome'; // Chemin vers Chrome sur Heroku
 
     const browser = await puppeteer.launch({
-      // executablePath: chromePath,
+      executablePath: chromePath,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
       headless: "new",
     });
