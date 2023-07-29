@@ -9,7 +9,7 @@ const webhook = new WebhookClient({ url: process.env.WEBHOOK_DISCORD });
  const getDataAndRefresh = async (res) => {
   const browser = await puppeteer.launch({
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
-    headless: true, // Utiliser headless en mode sans interface graphique
+    headless: "new", // Utiliser headless en mode sans interface graphique
   });
 
   try {
