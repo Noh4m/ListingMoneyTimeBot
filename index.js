@@ -19,7 +19,7 @@ const getDataAndRefresh = async () => {
       process.env.NODE_ENV === "production"
         ? process.env.PUPPETEER_EXECUTABLE_PATH
         : puppeteer.executablePath(),
-    headless: true, // Utiliser headless en mode sans interface graphique
+    headless: "new", // Utiliser headless en mode sans interface graphique
   });
 
   try {
