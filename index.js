@@ -75,11 +75,14 @@ const getDataAndRefresh = async () => {
           embeds: [embed],
         });
         console.log('Données récupérées et envoyées à Discord ✅');
+        console.log(new Date().toLocaleString());
       } else {
         console.log('Les données sont identiques, pas de nouvel envoi. ❌');
+        console.log(new Date().toLocaleString());
       }
     } else {
       console.error('La première balise <tr> avec le sélecteur CSS spécifié n\'a pas été trouvée. ⁉️');
+      console.log(new Date().toLocaleString());
     }
 
     await browser.close();
@@ -89,11 +92,15 @@ const getDataAndRefresh = async () => {
   }
 };
 
-// Appeler la fonction getDataAndRefresh toutes les 5 minutes
-setInterval(() => {
-  getDataAndRefresh().catch(error => {
+// Appeler la fonction getDataAndRefresh une fois après 5 minutes
+setTimeout(async () => {
+  try {
+    await getDataAndRefresh();
+    // Après l'exécution réussie, planifier le prochain appel dans 5 minutes
+    setInterval(getDataAndRefresh, 1 * 30 * 1000);
+  } catch (error) {
     console.error('Une erreur s\'est produite : ', error);
-  });
+  }
 }, 1 * 60 * 1000);
 
 // Appeler la fonction pour la première fois immédiatement
