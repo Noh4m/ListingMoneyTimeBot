@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const { WebhookClient, EmbedBuilder } = require('discord.js');
 
 // Remplacez "WEBHOOK_URL" par l'URL de votre Webhook Discord
-const webhook = new WebhookClient({ url: process.env.WEBHOOK_DISCORD });
+const webhook = new WebhookClient({ url: "https://discord.com/api/webhooks/1134476448506335272/YGYQwha20PHVZMo1kE6lKfPdnG7KNi2SA3Hl5MABQz0qsbF7D1g3Sud7QVfSZRiJWxKp" });
 
 // Définir la fonction getDataAndRefresh
  const getDataAndRefresh = async (res) => {
