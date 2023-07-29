@@ -26,6 +26,8 @@ const getDataAndRefresh = async () => {
     const page = await browser.newPage();
     await page.goto('https://www.coteur.com/comparateur-de-cotes');
     // Attendre que le sélecteur spécifié soit présent dans la page
+    await page.waitForNavigation();
+    
     await page.waitForSelector('div.table-responsive table tbody tr:first-child');
 
     // Vérifier si la page est toujours ouverte avant de continuer
