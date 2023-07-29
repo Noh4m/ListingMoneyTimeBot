@@ -7,6 +7,9 @@
     "heroku-prebuild": "npm install",
     "start": "node app.js"
   },
+  "engines": {
+    "node": "18.16.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
