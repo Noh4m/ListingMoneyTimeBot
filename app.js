@@ -1,16 +1,17 @@
-const express = require('express');
+const express = require("express");
+const { getDataAndRefresh } = require("./index");
 const app = express();
-const puppeteerScript = require('./index'); // Remplacez par le chemin vers votre script Puppeteer
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-// Configuration et routes de votre application Express
-// Exemple :
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+app.get("/scrape", (req, res) => {
+    getDataAndRefresh(res);
+});
+
+app.get("/", (req, res) => {
+  res.send("Render Puppeteer server is up and running!");
 });
 
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
-  puppeteerScript(); // Exécutez votre script Puppeteer ici
+  console.log(`Listening on port ${PORT}`);
 });
