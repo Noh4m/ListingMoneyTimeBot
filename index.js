@@ -90,7 +90,11 @@ const getDataAndRefresh = async () => {
 };
 
 // Appeler la fonction getDataAndRefresh toutes les 5 minutes
-setInterval(getDataAndRefresh, 3 * 60 * 1000);
+setInterval(() => {
+  getDataAndRefresh().catch(error => {
+    console.error('Une erreur s\'est produite : ', error);
+  });
+}, 1 * 60 * 1000);
 
 // Appeler la fonction pour la première fois immédiatement
 getDataAndRefresh().catch(error => {
