@@ -25,10 +25,6 @@ const getDataAndRefresh = async () => {
 
     const page = await browser.newPage();
     await page.goto('https://www.coteur.com/comparateur-de-cotes');
-    // Attendre que le sélecteur spécifié soit présent dans la page
-    await page.waitForNavigation();
-    
-    await page.waitForSelector('div.table-responsive table tbody tr:first-child');
 
     // Vérifier si la page est toujours ouverte avant de continuer
     if (!page.isClosed()) {
@@ -67,10 +63,8 @@ const getDataAndRefresh = async () => {
               { name: '\u200B', value: '\u200B' },
               { name: 'Cote 1', value: data.cote1, inline: true },
               { name: 'Cote 2', value: data.cote2, inline: true },
-              { name: 'Cote 3', value: data.cote3, inline: true },
-              { name: '\u200B', value: '\u200B' },
-              { name: 'Pourcentage 📊', value: data.percentage, inline: true }
-              )
+              { name: 'Cote 3', value: data.cote3, inline: true }
+            )
             .setTimestamp();
 
           // Envoyer le message dans le channel Discord via le Webhook
@@ -80,18 +74,19 @@ const getDataAndRefresh = async () => {
             embeds: [embed],
           });
 
-          console.log('Données récupérées et envoyées à Discord ✅');
+          console.log('Données récupérées et envoyées à Discord :', data);
         } else {
-          console.log('Les données sont identiques, pas de nouvel envoi. ❌');
+          console.log('Les nouvelles données sont identiques aux anciennes données. Aucun envoi nécessaire.');
         }
       } else {
-        console.error('La première balise <tr> avec le sélecteur CSS spécifié n\'a pas été trouvée. ⁉️');
+        console.error('La première balise <tr> avec le sélecteur CSS spécifié n\'a pas été trouvée.');
       }
     } else {
       console.error('La page a été fermée avant la navigation.');
     }
 
     await browser.close();
+    console.log('Rafraîchissement des données terminé.');
   } catch (error) {
     console.error('Une erreur s\'est produite : ', error);
     if (browser) {
