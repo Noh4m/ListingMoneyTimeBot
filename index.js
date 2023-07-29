@@ -8,7 +8,16 @@ const webhook = new WebhookClient({ url: process.env.WEBHOOK_DISCORD });
 // Définir la fonction getDataAndRefresh
  const getDataAndRefresh = async (res) => {
   const browser = await puppeteer.launch({
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    rgs: [
+      "--disable-setuid-sandbox",
+      "--no-sandbox",
+      "--single-process",
+      "--no-zygote",
+    ],
+    executablePath:
+      process.env.NODE_ENV === "production"
+        ? process.env.PUPPETEER_EXECUTABLE_PATH
+        : puppeteer.executablePath(),
     headless: "new", // Utiliser headless en mode sans interface graphique
   });
 
