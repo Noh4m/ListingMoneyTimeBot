@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "npm install",
-    "start": "node server.js && node index.js"
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
