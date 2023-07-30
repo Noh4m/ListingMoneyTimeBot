@@ -97,7 +97,7 @@ setTimeout(async () => {
   try {
     await getDataAndRefresh();
     // Après l'exécution réussie, planifier le prochain appel dans 5 minutes
-    setInterval(getDataAndRefresh, 1 * 60 * 1000);
+    setInterval(getDataAndRefresh, 5 * 60 * 1000);
   } catch (error) {
     console.error('Une erreur s\'est produite : ', error);
   }
