@@ -101,7 +101,7 @@ setTimeout(async () => {
   } catch (error) {
     console.error('Une erreur s\'est produite : ', error);
   }
-}, 1 * 60 * 1000);
+}, 5 * 60 * 1000);
 
 // Appeler la fonction pour la première fois immédiatement
 getDataAndRefresh().catch(error => {
