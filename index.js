@@ -43,7 +43,7 @@ const getDataAndRefresh = async () => {
       data.percentage = (await cells[7].$('b.orange')) ? await cells[7].$eval('b.orange', percentage => percentage.textContent) : 'N/A';
 
       // Comparer les nouvelles données avec les dernières données
-      if (JSON.stringify(data) !== JSON.stringify(lastData)) {
+      if (JSON.stringify(data) !== JSON.stringify(lastData) && parseFloat(data.percentage) >= 96) {
         lastData = data;
 
         // Créer un nouvel embed avec EmbedBuilder
